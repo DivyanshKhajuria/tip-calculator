@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Frontend Mentor | Tip calculator app</title>
+<link rel="stylesheet"href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="main-title">SPLI<br>TTER</h1>
+        <div class="main-content">
+            <div class="left-container">
+                <!-- Bill Section -->
+                <div class="bill-section">
+
+                    <div class="title">
+                        <h6>Bill</h6>
+                        <h6 class="error-message" id="bill-error-message">Can't be negative or zero</h6>
+                    </div>
+                    <div class="icon-inside">
+                        <i class="fa fa-usd" aria-hidden="true"></i>
+                        <input style="background-color: hsl(187, 82%, 94%);" onclick="this.value = ''; document.querySelector('.error-message').style.visibility = 'visible'" type="number" class="form-control" id="bill-charge" name="bill-charge" value="0">
+                    </div>
+                </div>
+                <!-- Select Tip Section -->
+                <div class="select-tip-section">
+
+                    <div class="title">
+                        <h6>Select Tip %</h6>
+                        <h6 class="error-message" id="tip-error-message">Can't be negative</h6>
+                    </div>
+                    <div class="tip-options">
+                        <div class="tip-buttons">
+                            <button onclick="tip(event)" value="5" id="tip-5" class="tip-value btn">5%</button>
+                            <button onclick="tip(event)" value="10" id="tip-10" class="tip-value btn">10%</button>
+                            <button onclick="tip(event)" value="15" id="tip-15" class="tip-value btn">15%</button>
+                            <button onclick="tip(event)" value="25" id="tip-25" class="tip-value btn">25%</button>
+                            <button onclick="tip(event)" value="50" id="tip-50" class="tip-value btn">50%</button>
+                            <input style="background-color: hsl(187, 82%, 94%);" onkeyup="this.value.indexOf('-') ? document.querySelector('#tip-error-message').style.visibility = 'visible' : null" onchange="customSide(event)" type="number" id="custom-tip" class="tip-value form-control" name="custom-tip" placeholder="Custom">
+                        </div>
+                    </div>
+                </div>
+                <!-- Number of People Section -->
+                <div class="number-of-people-section">
+
+                    <div class="title">
+                        <h6>Number of People</h6>
+                        <h6 class="error-message" id="people-error-message">Can't be negative or zero</h6>
+                    </div>
+                    <div class="icon-inside">
+                        <i class="fa fa-user icon"></i>
+                        <input style="background-color: hsl(187, 82%, 94%);" onclick="this.value = ''; document.querySelector('#people-error-message').style.visibility = 'visible'" onchange="tipAmount(tip)" type="number" class="form-control" id="people-count" name="people-count" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="right-container">
+                <div class="information">
+                    <p class="tip-amount">Tip Amount<br><span>/person</span></p>
+                    <p class="amount" id="total-tip-per-person">$0.00</p>
+                    <p class="tip-amount">Total<br><span>/person</span></p>
+                    <p class="amount" id="total-amount-per-person">$0.00</p>
+                </div>
+                <button onclick="calculateButton()" class="calculate-button btn container-fluid">CALCULATE</button>
+                <button onclick="resetButton()" class="reset-button btn container-fluid">RESET</button>
+            </div> 
+        </div>
+        <script src="./script.js"></script>
+    </div>
+        <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://github.com/DivyanshKhajuria">Divyansh Khajuria</a>.
+        </div>
+</body>
+</html>
